@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  generate_trt:
+    build:
+      dockerfile: dockerfile
+    volumes:
+      - ./data:/home/gadget/workspace/data
+      - ..:/home/gadget/workspace/pipeline
+    deploy:
+        resources:
+          reservations:
+            devices:
+              - driver: nvidia
+                count: 1
+                capabilities: [gpu]
+    command: python3 train.py task=segmentation models=segmentation/pointnet2 model_name=pointnet2_charlesssg data=segmentation/shapenet-fixed
