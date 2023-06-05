@@ -4,8 +4,8 @@ services:
     build:
       dockerfile: dockerfile
     volumes:
-      - ./data:/home/gadget/workspace/data
-      - ..:/home/gadget/workspace/pipeline
+      - ./outputs:/repos/torch-points3d/outputs
+      - ./data:/repos/torch-points3d/data
     deploy:
         resources:
           reservations:
